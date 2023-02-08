@@ -34,14 +34,20 @@ class TikaApi:
         if res.status_code == Status.ERROR.value:
             raise errors.InternalServerException(res.text)
 
-    def get_meta(self, file: BufferedReader) -> dict:
+    def get_meta(self, file: BufferedReader, key=None) -> dict:
         """
         Get metadata from file-like object
         :param file: file-like object
+        :param key optional: metadata key to retrieve only one value
         :return: dict with metadata
         """
         headers = self.headers
-        res = requests.put(f"{self.url}/meta", data=file, headers=headers)
+        url = f"{self.url}/meta"
+
+        if key:
+            url += f"/{key}"
+
+        res = requests.put(url, data=file, headers=headers)
 
         self.handle_errors(res)
 
