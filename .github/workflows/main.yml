@@ -1,0 +1,20 @@
+name: Build Docker image
+on:
+  push: {}
+jobs:
+  build-and-test:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/setup-buildx-action@v1
+      - name: Build and push
+        uses: docker/bake-action@master
+        with:
+          push: false
+          load: true
+          set: |
+            web.cache-from=type=gha
+            web.cache-to=type=gha
+      - name: Test
+        run: docker compose run test
