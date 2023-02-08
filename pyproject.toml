@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "pytika"
+version = "0.1.0"
+description = "Apache Tika Server python client"
+authors = ["RamiAwar <rami.awar.ra@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.28.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.1"
+black = "^23.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 200

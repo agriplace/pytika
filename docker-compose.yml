@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  tika:
+    image: apache/tika:2.7.0-full
+    container_name: tika
+    ports:
+      - "9998:9998"
+    logging:
+      driver: none
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:9998"]
+      interval: 1s
+      timeout: 1s
+      retries: 10
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pytika-test
+    stdin_open: true
+    tty: true
+    depends_on:
+      tika:
+        condition: service_healthy
+    command: /bin/sh -c "pytest -v /app"
+    network_mode: host
