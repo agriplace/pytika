@@ -1,6 +1,6 @@
 import pytest
 
-from tika.api import TikaApi
+from pytika.api import TikaApi
 
 
 @pytest.fixture

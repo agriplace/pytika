@@ -4,7 +4,7 @@ from io import BufferedReader
 
 import requests
 
-from tika import errors
+from pytika import errors
 
 
 class Status(Enum):
@@ -53,3 +53,32 @@ class TikaApi:
 
         metadata = res.json()
         return metadata
+
+    def get_text(self, file: BufferedReader, skip_ocr: bool = False, ocr_inline: bool = False, ocr_page: bool = False) -> str:
+        """
+        Get text from file-like object
+        Reference: https://cwiki.apache.org/confluence/display/tika/TikaOCR
+
+        :param file: file-like object
+        :param skip_ocr: skip OCR if True
+        :param ocr_inline: extract inline images and run OCR on each if True
+        :param ocr_page: render whole page and run OCR on that once if True (should be faster)
+        :return: text
+        """
+        headers = self.headers
+        if skip_ocr:
+            headers["X-Tika-OCRskipOcr"] = "true"
+
+        if ocr_inline:
+            headers["X-Tika-PDFextractInlineImages"] = "true"
+
+        if ocr_page:
+            headers["X-Tika-PDFOcrStrategy"] = "ocr_only"
+
+        url = f"{self.url}/tika"
+
+        res = requests.put(url, data=file, headers=headers)
+
+        self.handle_errors(res)
+
+        return res.text

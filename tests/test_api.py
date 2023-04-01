@@ -1,7 +1,7 @@
 import pytest
 
-from tika import errors
-from tika.api import TikaApi
+from pytika import errors
+from pytika.api import TikaApi
 
 
 def test_get_meta(api: TikaApi):
