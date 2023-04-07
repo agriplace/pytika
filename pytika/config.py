@@ -1,6 +1,6 @@
-from typing import Callable, Literal, TypedDict
+from typing import Callable
 
-from typing_extensions import NotRequired
+from typing_extensions import Literal, NotRequired, TypedDict
 
 Bool = Literal["true", "false"]
 GetTextOptions = TypedDict(
