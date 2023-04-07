@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        
+        <meta name="pdf:PDFVersion" content="1.4"/>
+        
+        <meta name="pdf:docinfo:title" content="Untitled document"/>
+        
+        <meta name="pdf:hasXFA" content="false"/>
+        
+        <meta name="access_permission:modify_annotations" content="true"/>
+        
+        <meta name="pdf:producer" content="Skia/PDF m114 Google Docs Renderer"/>
+        
+        <meta name="access_permission:can_print_degraded" content="true"/>
+        
+        <meta name="access_permission:extract_for_accessibility" content="true"/>
+        
+        <meta name="access_permission:assemble_document" content="true"/>
+        
+        <meta name="xmpTPg:NPages" content="1"/>
+        
+        <meta name="pdf:hasXMP" content="false"/>
+        
+        <meta name="dc:format" content="application/pdf; version=1.4"/>
+        
+        <meta name="access_permission:extract_content" content="true"/>
+        
+        <meta name="access_permission:can_print" content="true"/>
+        
+        <meta name="access_permission:fill_in_form" content="true"/>
+        
+        <meta name="pdf:hasCollection" content="false"/>
+        
+        <meta name="X-TIKA:Parsed-By" content="org.apache.tika.parser.DefaultParser"/>
+        
+        <meta name="X-TIKA:Parsed-By" content="org.apache.tika.parser.pdf.PDFParser"/>
+        
+        <meta name="pdf:encrypted" content="false"/>
+        
+        <meta name="dc:title" content="Untitled document"/>
+        
+        <meta name="Content-Length" content="11944"/>
+        
+        <meta name="access_permission:can_modify" content="true"/>
+        
+        <meta name="pdf:docinfo:producer" content="Skia/PDF m114 Google Docs Renderer"/>
+        
+        <meta name="pdf:hasMarkedContent" content="false"/>
+        
+        <meta name="Content-Type" content="application/pdf"/>
+        
+        <title>Untitled document</title>
+        
+    </head>
+    
+    <body>
+        <div class="page">
+            <div class="ocr">
+                 
+  
+  
+  
+  
+ 
+ 
+  
+                <div class="ocr_page" id="page_1" title="image &quot;/tmp/tika-pdfbox-rendering-1518088859757762682-1-1.png&quot;; bbox 0 0 2550 3299; ppageno 0; scan_res 300 300">
+                       
+                    <div class="ocr_carea" id="block_1_1" title="bbox 302 310 596 353">
+                            
+                        <p class="ocr_par" id="par_1_1" lang="eng" title="bbox 302 310 596 353">
+                                 
+                            <span class="ocr_line" id="line_1_1" title="bbox 302 310 596 353; baseline -0.003 -9; x_size 44; x_descenders 10; x_ascenders 9">
+                                      
+                                <span class="ocrx_word" id="word_1_1" title="bbox 302 310 449 353; x_wconf 95">dummy</span>
+                                      
+                                <span class="ocrx_word" id="word_1_2" title="bbox 466 310 528 352; x_wconf 95">pdf</span>
+                                      
+                                <span class="ocrx_word" id="word_1_3" title="bbox 540 310 596 344; x_wconf 96">file</span>
+                                     
+                            </span>
+                                
+                        </p>
+                           
+                    </div>
+                      
+                </div>
+                 
+
+            </div>
+            
+        </div>
+        
+    </body>
+</html>

@@ -1,10 +1,12 @@
 import os
 from enum import Enum
 from io import BufferedReader
+from typing import Callable, List
 
 import requests
 
 from pytika import errors
+from pytika.config import GetTextOptions, GetTextOptionsBuilder
 
 
 class Status(Enum):
@@ -54,26 +56,26 @@ class TikaApi:
         metadata = res.json()
         return metadata
 
-    def get_text(self, file: BufferedReader, skip_ocr: bool = False, ocr_inline: bool = False, ocr_page: bool = False) -> str:
+    def get_text(
+        self,
+        file: BufferedReader,
+        *opts: List[Callable[..., GetTextOptions]],
+    ) -> bytes:
         """
-        Get text from file-like object
+        Get text from file-like object. By default returns xml without bounding boxes.
+        Use WithBoundingBoxes or AsPlainText options to change this behaviour.
         Reference: https://cwiki.apache.org/confluence/display/tika/TikaOCR
 
         :param file: file-like object
-        :param skip_ocr: skip OCR if True
-        :param ocr_inline: extract inline images and run OCR on each if True
-        :param ocr_page: render whole page and run OCR on that once if True (should be faster)
-        :return: text
+        :return: text as bytes
         """
         headers = self.headers
-        if skip_ocr:
-            headers["X-Tika-OCRskipOcr"] = "true"
+        headers["Accept"] = "*/*"  # Do not want to force json
 
-        if ocr_inline:
-            headers["X-Tika-PDFextractInlineImages"] = "true"
-
-        if ocr_page:
-            headers["X-Tika-PDFOcrStrategy"] = "ocr_only"
+        defaults = [GetTextOptionsBuilder.OCROnly()]
+        defaults.extend(opts)
+        for opt in defaults:
+            headers = opt(headers)
 
         url = f"{self.url}/tika"
 
@@ -81,4 +83,4 @@ class TikaApi:
 
         self.handle_errors(res)
 
-        return res.text
+        return res.content
