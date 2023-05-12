@@ -54,6 +54,9 @@ class TikaApi:
         self.handle_errors(res)
 
         metadata = res.json()
+
+        if hasattr(file, "seek"):
+            file.seek(0) # Reset filereader for reusability
         return metadata
 
     def get_text(
@@ -83,4 +86,6 @@ class TikaApi:
 
         self.handle_errors(res)
 
+        if hasattr(file, "seek"):
+            file.seek(0) # Reset filereader for reusability
         return res.content
